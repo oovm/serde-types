@@ -3,37 +3,37 @@ use std::{
     hash::{Hash, Hasher},
 };
 
-use crate::PackageKey;
+use crate::InsensitiveKey;
 
-impl Hash for PackageKey {
+impl Hash for InsensitiveKey {
     fn hash<H: Hasher>(&self, state: &mut H) {
         self.key.hash(state);
     }
 }
 
-impl<S> PartialEq<S> for PackageKey
+impl<S> PartialEq<S> for InsensitiveKey
 where
     S: AsRef<str>,
 {
     fn eq(&self, other: &S) -> bool {
-        let rhs = PackageKey::new(other.as_ref());
+        let rhs = InsensitiveKey::new(other.as_ref());
         self.key.eq(&rhs.key)
     }
 }
 
-impl Eq for PackageKey {}
+impl Eq for InsensitiveKey {}
 
-impl<S> PartialOrd<S> for PackageKey
+impl<S> PartialOrd<S> for InsensitiveKey
 where
     S: AsRef<str>,
 {
     fn partial_cmp(&self, other: &S) -> Option<Ordering> {
-        let rhs = PackageKey::new(other.as_ref());
+        let rhs = InsensitiveKey::new(other.as_ref());
         self.key.partial_cmp(&rhs.key)
     }
 }
 
-impl Ord for PackageKey {
+impl Ord for InsensitiveKey {
     fn cmp(&self, other: &Self) -> Ordering {
         self.key.cmp(&other.key)
     }

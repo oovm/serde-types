@@ -1,8 +1,8 @@
 use serde::{Serialize, Serializer};
 
-use crate::PackageKey;
+use crate::InsensitiveKey;
 
-impl Serialize for PackageKey {
+impl Serialize for InsensitiveKey {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where
         S: Serializer,

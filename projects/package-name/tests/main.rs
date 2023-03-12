@@ -1,4 +1,4 @@
-use package_key::PackageKey;
+use package_key::InsensitiveKey;
 
 #[test]
 fn ready() {
@@ -7,9 +7,9 @@ fn ready() {
 
 #[test]
 fn test_serde() {
-    let s1 = serde_json::to_string(&PackageKey::new("test")).unwrap();
+    let s1 = serde_json::to_string(&InsensitiveKey::new("test")).unwrap();
     assert_eq!(s1, "\"TEST\"");
-    let s2: PackageKey = serde_json::from_str("\"test\"").unwrap();
+    let s2: InsensitiveKey = serde_json::from_str("\"test\"").unwrap();
 
     println!("{}", s2);
 }

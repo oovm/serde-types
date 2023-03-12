@@ -1,10 +1,10 @@
 [package]
 name = "package-key"
-version = "0.0.0"
+version = "0.1.1"
 authors = ["Aster <192607617@qq.com>"]
 description = "A case-insensitive, normalized string, suitable as a package name."
 repository = "https://github.com/oovm/serde-types"
-documentation = "https://docs.rs/package-name"
+documentation = "https://docs.rs/package-key"
 readme = "Readme.md"
 license = "MPL-2.0"
 edition = "2021"

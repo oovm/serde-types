@@ -1,10 +1,10 @@
 use serde::{de::Visitor, Deserialize, Deserializer};
 
-use crate::PackageKey;
+use crate::InsensitiveKey;
 use serde::de::Error;
 struct KeyVisitor;
 
-impl<'de> Deserialize<'de> for PackageKey {
+impl<'de> Deserialize<'de> for InsensitiveKey {
     fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
     where
         D: Deserializer<'de>,
@@ -21,7 +21,7 @@ impl<'de> Deserialize<'de> for PackageKey {
 }
 
 impl<'de> Visitor<'de> for KeyVisitor {
-    type Value = PackageKey;
+    type Value = InsensitiveKey;
 
     fn expecting(&self, formatter: &mut core::fmt::Formatter) -> std::fmt::Result {
         formatter.write_str("Expect a `PackageKey` string")
@@ -30,6 +30,6 @@ impl<'de> Visitor<'de> for KeyVisitor {
     where
         E: Error,
     {
-        Ok(PackageKey::new(v))
+        Ok(InsensitiveKey::new(v))
     }
 }
