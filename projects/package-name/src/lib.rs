@@ -1,26 +1,38 @@
-mod third_party;
-use std::fmt::{Debug, Display, Formatter};
+use serde_derive::{Deserialize, Serialize};
 
-pub struct UniqueKey {
+mod methods;
+mod third_party;
+
+#[derive(Serialize, Deserialize)]
+pub struct PackageKey {
     key: String,
 }
 
+impl Default for PackageKey {
+    fn default() -> Self {
+        PackageKey::new("")
+    }
+}
 
-impl UniqueKey {
+impl PackageKey {
     pub fn new<S>(key: S) -> Self
-        where
-            S: Into<String>,
+    where
+        S: AsRef<str>,
     {
-        Self { key: key.as_ref().to_string() }
+        Self { key: norm_key(key.as_ref()) }
     }
     pub fn as_str(&self) -> &str {
         &self.key
     }
 }
 
-impl Default for UniqueKey {
-    fn default() -> Self {
-        Self::new("")
+fn norm_key(s: &str) -> String {
+    let mut out = String::with_capacity(s.len());
+    for c in s.chars() {
+        match c {
+            ' ' | '_' | '-' => out.push('_'),
+            _ => out.push(c.to_ascii_uppercase()),
+        }
     }
+    out
 }
-

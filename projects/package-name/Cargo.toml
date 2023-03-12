@@ -1,5 +1,5 @@
 [package]
-name = "package-name"
+name = "package-key"
 version = "0.0.0"
 authors = ["Aster <192607617@qq.com>"]
 description = "A case-insensitive, normalized string, suitable as a package name."
