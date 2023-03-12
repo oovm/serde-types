@@ -1,5 +1,5 @@
 [package]
-name = "package-name"
+name = "serde-types"
 version = "0.0.0"
 authors = ["Aster <192607617@qq.com>"]
 description = "A case-insensitive, normalized string, suitable as a package name."
@@ -10,8 +10,6 @@ license = "MPL-2.0"
 edition = "2021"
 
 [dependencies]
-serde = "1.0.155"
-serde_derive = "1.0.155"
 
 [dev-dependencies]
 
