@@ -1,5 +1,3 @@
-use crate::PackageKey;
-
 mod compare;
 mod der;
 mod display;
