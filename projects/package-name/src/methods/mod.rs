@@ -1,8 +1,18 @@
+use std::ops::Deref;
+
 use crate::InsensitiveKey;
 
 impl Default for InsensitiveKey {
     fn default() -> Self {
         InsensitiveKey::new("")
+    }
+}
+
+impl Deref for InsensitiveKey {
+    type Target = str;
+
+    fn deref(&self) -> &Self::Target {
+        &self.key
     }
 }
 

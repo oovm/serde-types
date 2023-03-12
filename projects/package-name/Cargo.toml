@@ -1,6 +1,6 @@
 [package]
 name = "package-key"
-version = "0.1.1"
+version = "0.2.0"
 authors = ["Aster <192607617@qq.com>"]
 description = "A case-insensitive, normalized string, suitable as a package name."
 repository = "https://github.com/oovm/serde-types"

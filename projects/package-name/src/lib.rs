@@ -11,6 +11,7 @@ mod third_party;
 /// let key2 = InsensitiveKey::new("package_name");
 /// assert_eq!(key1, key2);
 /// ```
+#[derive(Clone)]
 pub struct InsensitiveKey {
     key: String,
 }
