@@ -11,17 +11,25 @@ impl Hash for PackageKey {
     }
 }
 
-impl PartialEq<Self> for PackageKey {
-    fn eq(&self, other: &Self) -> bool {
-        self.key.eq(&other.key)
+impl<S> PartialEq<S> for PackageKey
+where
+    S: AsRef<str>,
+{
+    fn eq(&self, other: &S) -> bool {
+        let rhs = PackageKey::new(other.as_ref());
+        self.key.eq(&rhs.key)
     }
 }
 
 impl Eq for PackageKey {}
 
-impl PartialOrd<Self> for PackageKey {
-    fn partial_cmp(&self, other: &Self) -> Option<Ordering> {
-        self.key.partial_cmp(&other.key)
+impl<S> PartialOrd<S> for PackageKey
+where
+    S: AsRef<str>,
+{
+    fn partial_cmp(&self, other: &S) -> Option<Ordering> {
+        let rhs = PackageKey::new(other.as_ref());
+        self.key.partial_cmp(&rhs.key)
     }
 }
 
